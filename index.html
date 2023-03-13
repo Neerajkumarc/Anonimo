@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploring Socket</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+      let form = document.getElementById("form");
+      let input = document.getElementById("input");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit("chat message", input.value);
+          input.value = "";
+        }
+      });
+
+      socket.on("connection", ({userId}) => {
+        let messageItem = document.createElement("li");
+        messageItem.textContent = `${userId} : connected`;
+        document.getElementById("messages").appendChild(messageItem);
+      });
+
+
+      socket.on("chat message", ({userId,  msg }) => {
+        let messageItem = document.createElement("li");
+        messageItem.textContent = `${userId} : ${msg}`;
+        document.getElementById("messages").appendChild(messageItem);
+      });
+
+      socket.on("user disconnected", ({userId}) => {
+        let messageItem = document.createElement("li");
+        messageItem.textContent = `${userId} : disconnected`;
+        document.getElementById("messages").appendChild(messageItem);
+      });
+
+    
+    </script>
+  </body>
+</html>
