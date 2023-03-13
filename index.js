@@ -1,3 +1,5 @@
+const PORT = process.env.PORT || 3000
+require('dotenv').config()
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -21,6 +23,6 @@ io.on("connection", (socket) => {
 });
 
 
-server.listen(3000, () => {
-  console.log("server started");
+server.listen(PORT, () => {
+  console.log("server started on "+ PORT);
 });
