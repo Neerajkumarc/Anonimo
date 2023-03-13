@@ -5,12 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exploring Socket</title>
+    <style>
+      #onlineUsers {
+        height: 50px;
+        width: 50px;
+        border: 2px solid green;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .onlineUserDiv {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0.5rem;
+      }
+    </style>
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
+    <div>
+      <ul id="messages"></ul>
+      <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+      </form>
+    </div>
+    <div class="onlineUserDiv">
+      <p id="onlineUsers">0</p>
+      <span>Online</span>
+    </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script>
@@ -25,26 +48,25 @@
         }
       });
 
-      socket.on("connection", ({userId}) => {
+      socket.on("connection", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.textContent = `${userId} : connected`;
+        messageItem.textContent = `${userId} connected`;
         document.getElementById("messages").appendChild(messageItem);
+        document.getElementById("onlineUsers").innerText = onlineUsers;
       });
 
+      socket.on("user disconnected", ({ userId, onlineUsers }) => {
+        let messageItem = document.createElement("li");
+        messageItem.textContent = `${userId} disconnected`;
+        document.getElementById("messages").appendChild(messageItem);
+        document.getElementById("onlineUsers").innerText = onlineUsers;
+      });
 
-      socket.on("chat message", ({userId,  msg }) => {
+      socket.on("chat message", ({ userId, msg }) => {
         let messageItem = document.createElement("li");
         messageItem.textContent = `${userId} : ${msg}`;
         document.getElementById("messages").appendChild(messageItem);
       });
-
-      socket.on("user disconnected", ({userId}) => {
-        let messageItem = document.createElement("li");
-        messageItem.textContent = `${userId} : disconnected`;
-        document.getElementById("messages").appendChild(messageItem);
-      });
-
-    
     </script>
   </body>
 </html>

@@ -12,13 +12,13 @@ app.get("/", (req, res) => {
 });
 
 io.on("connection", (socket) => {
-  io.emit("connection", { userId: socket.id });
+  io.emit("connection", { userId: socket.id , onlineUsers:socket.adapter.sids.size});
   socket.on("chat message", (msg) => {
     io.emit("chat message", { userId: socket.id, msg });
   });
 
   socket.on("disconnect", () => {
-    io.emit("user disconnected", { userId: socket.id });
+    io.emit("user disconnected",{ userId: socket.id , onlineUsers:socket.adapter.sids.size});
   });
 });
 
