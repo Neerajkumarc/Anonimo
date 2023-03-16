@@ -1,0 +1,34 @@
+body {
+    background-color: black;
+    color: white;
+  }
+  p{
+    max-width: 100vw;
+    overflow-wrap: break-word;
+  }
+  #onlineUsers {
+    height: 40px;
+    width: 40px;
+    border: 2px solid green;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header {
+    display: flex;
+    gap: 8px;
+  }
+  .onlineUserDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+  }
+  .userInfo{
+    color: #a9dfa9;
+    font-size: .8rem;
+  }
+  .userMsg{
+    font-size: 1.5rem;
+  }
