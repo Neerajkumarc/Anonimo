@@ -75,14 +75,14 @@
 
       socket.on("connection", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.textContent = `${userId} connected`;
+        messageItem.textContent = `${userId.slice(0,6)} connected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
       });
 
       socket.on("user disconnected", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.textContent = `${userId} disconnected`;
+        messageItem.textContent = `${userId.slice(0,6)} disconnected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
       });
@@ -94,7 +94,7 @@
         userInfo.classList.add("userInfo")
         const userMsg = document.createElement("span")
         userMsg.classList.add("userMsg")
-        userInfo.textContent = userId
+        userInfo.textContent = userId.slice(0,6)
         userMsg.textContent =` : ${msg}`
         messageWrapper.appendChild(userInfo);
         messageWrapper.appendChild(userMsg);
