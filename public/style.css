@@ -32,3 +32,12 @@ body {
   .userMsg{
     font-size: 1.5rem;
   }
+
+  input{
+    padding: .3rem;
+    border-radius: .4rem;
+  }
+  .btn{
+    padding: .2rem;
+
+  }
