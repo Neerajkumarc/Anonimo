@@ -1,43 +1,48 @@
 body {
-    background-color: black;
-    color: white;
-  }
-  p{
-    max-width: 100vw;
-    overflow-wrap: break-word;
-  }
-  #onlineUsers {
-    height: 40px;
-    width: 40px;
-    border: 2px solid green;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .header {
-    display: flex;
-    gap: 8px;
-  }
-  .onlineUserDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-  }
-  .userInfo{
-    color: #a9dfa9;
-    font-size: .8rem;
-  }
-  .userMsg{
-    font-size: 1.5rem;
-  }
+  background-color: black;
+  color: white;
+}
+h1{
+  color: #4cd44c;
+}
+.container{
+  padding: 1rem;
+}
+p {
+  max-width: 100vw;
+  overflow-wrap: break-word;
+}
+#onlineUsers {
+  height: 40px;
+  width: 40px;
+  border: 2px solid green;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header {
+  display: flex;
+  gap: 8px;
+}
+.onlineUserDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+.userInfo {
+  color: #a9dfa9;
+  font-size: 0.8rem;
+}
+.userMsg {
+  font-size: 1.5rem;
+}
 
-  input{
-    padding: .3rem;
-    border-radius: .4rem;
-  }
-  .btn{
-    padding: .2rem;
-
-  }
+input {
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+}
+.btn {
+  padding: 0.2rem;
+}
