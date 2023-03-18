@@ -5,43 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exploring Socket</title>
-    <link rel="stylesheet" href="/style.css">
-    <!-- <style>
-      body {
-        background-color: black;
-        color: white;
-      }
-      p{
-        max-width: 100vw;
-        overflow-wrap: break-word;
-      }
-      #onlineUsers {
-        height: 40px;
-        width: 40px;
-        border: 2px solid green;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .header {
-        display: flex;
-        gap: 8px;
-      }
-      .onlineUserDiv {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 2px;
-      }
-      .userInfo{
-        color: #a9dfa9;
-        font-size: .8rem;
-      }
-      .userMsg{
-        font-size: 1.5rem;
-      }
-    </style> -->
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <div class="container">
@@ -55,7 +19,9 @@
       <div class="message-container">
         <ul id="messages"></ul>
         <form id="form" action="">
-          <input id="input" autocomplete="off" /><button class="btn">Send</button>
+          <input id="input" autocomplete="off" /><button class="btn">
+            Send
+          </button>
         </form>
       </div>
     </div>
@@ -75,31 +41,31 @@
 
       socket.on("connection", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.textContent = `${userId.slice(0,6)} connected`;
+        messageItem.textContent = `${userId.slice(0, 6)} connected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
       });
 
       socket.on("user disconnected", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.textContent = `${userId.slice(0,6)} disconnected`;
+        messageItem.textContent = `${userId.slice(0, 6)} disconnected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
       });
 
       socket.on("chat message", ({ userId, msg }) => {
         let messageItem = document.createElement("li");
-        const messageWrapper = document.createElement("p")
-        const userInfo = document.createElement("span")
-        userInfo.classList.add("userInfo")
-        const userMsg = document.createElement("span")
-        userMsg.classList.add("userMsg")
-        userInfo.textContent = userId.slice(0,6)
-        userMsg.textContent =` : ${msg}`
+        const messageWrapper = document.createElement("p");
+        const userInfo = document.createElement("span");
+        userInfo.classList.add("userInfo");
+        const userMsg = document.createElement("span");
+        userMsg.classList.add("userMsg");
+        userInfo.textContent = userId.slice(0, 6);
+        userMsg.textContent = ` : ${msg}`;
         messageWrapper.appendChild(userInfo);
         messageWrapper.appendChild(userMsg);
-        messageItem.appendChild(messageWrapper)
-        document.getElementById("messages").appendChild(messageItem)
+        messageItem.appendChild(messageWrapper);
+        document.getElementById("messages").appendChild(messageItem);
       });
     </script>
   </body>
