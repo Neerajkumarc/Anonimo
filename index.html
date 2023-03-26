@@ -12,16 +12,17 @@
       <div class="header">
         <h1>Chat Anonymously</h1>
         <div class="onlineUserDiv">
+          <p>Online Users:</p>
           <p id="onlineUsers">0</p>
-          <p>Online</p>
         </div>
       </div>
-      <div class="message-container">
+      <div class="msg">
         <ul id="messages"></ul>
+      </div>
+      <div class="input-box">
         <form id="form" action="">
-          <input id="input" autocomplete="off" /><button class="btn">
-            Send
-          </button>
+          <input id="input" autocomplete="off" />
+          <button class="btn">Send</button>
         </form>
       </div>
     </div>
@@ -38,7 +39,6 @@
           input.value = "";
         }
       });
-
       socket.on("connection", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
         messageItem.textContent = `${userId.slice(0, 6)} connected`;
