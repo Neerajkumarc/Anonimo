@@ -41,6 +41,7 @@
       });
       socket.on("connection", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
+        messageItem.classList.add("connected")
         messageItem.textContent = `${userId.slice(0, 6)} connected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
@@ -48,6 +49,7 @@
 
       socket.on("user disconnected", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
+        messageItem.classList.add("disconnected")
         messageItem.textContent = `${userId.slice(0, 6)} disconnected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;

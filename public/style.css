@@ -82,6 +82,8 @@ input {
 
 .msg li {
   list-style-type: "$ ";
+  padding: .2rem;
+  margin: .2rem;
 }
 
 .userInfo {
@@ -92,4 +94,12 @@ input {
   font-size: 1.5rem;
   max-width: 80%;
   overflow-wrap: break-word;
+}
+.connected{
+  background-color: rgb(100, 248, 100);
+  color: black;
+}
+.disconnected{
+  background-color: rgb(255, 100, 100);
+  color: black;
 }
