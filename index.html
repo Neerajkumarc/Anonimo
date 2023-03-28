@@ -32,6 +32,12 @@
       var socket = io();
       let form = document.getElementById("form");
       let input = document.getElementById("input");
+
+      const autoScroll = () => {
+        const el = document.querySelector(".msg");
+        el.scrollTop = el.scrollHeight;
+      };
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (input.value) {
@@ -41,18 +47,20 @@
       });
       socket.on("connection", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.classList.add("connected")
+        messageItem.classList.add("connected");
         messageItem.textContent = `${userId.slice(0, 6)} connected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
+        autoScroll();
       });
 
       socket.on("user disconnected", ({ userId, onlineUsers }) => {
         let messageItem = document.createElement("li");
-        messageItem.classList.add("disconnected")
+        messageItem.classList.add("disconnected");
         messageItem.textContent = `${userId.slice(0, 6)} disconnected`;
         document.getElementById("messages").appendChild(messageItem);
         document.getElementById("onlineUsers").innerText = onlineUsers;
+        autoScroll();
       });
 
       socket.on("chat message", ({ userId, msg }) => {
@@ -68,6 +76,7 @@
         messageWrapper.appendChild(userMsg);
         messageItem.appendChild(messageWrapper);
         document.getElementById("messages").appendChild(messageItem);
+        autoScroll();
       });
     </script>
   </body>
