@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background: linear-gradient(rgb(38, 38, 38), black);
   color: whitesmoke;
@@ -71,7 +70,6 @@ input {
   padding: 0.4rem;
   border-radius: 0.2rem;
 }
-
 .btn {
   border: 2px solid green;
   background: transparent;
@@ -79,27 +77,24 @@ input {
   padding: 0.4rem 1rem;
   font-weight: bolder;
 }
-
 .msg li {
-  list-style-type: "$ ";
-  padding: .2rem;
-  margin: .2rem;
+  list-style: none;
+  padding: .5rem;
+  margin: .35rem;
+  background-color: rgb(39, 39, 39);
+  border-radius: .4rem;
 }
-
 .userInfo {
   color: green;
 }
-
 .userMsg {
   font-size: 1.5rem;
   max-width: 80%;
   overflow-wrap: break-word;
 }
-.connected{
-  background-color: rgb(100, 248, 100);
-  color: black;
+.connected{  
+  color: green;
 }
 .disconnected{
-  background-color: rgb(255, 100, 100);
-  color: black;
+  color: red;
 }
